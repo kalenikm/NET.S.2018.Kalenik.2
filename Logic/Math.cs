@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Logic
 {
@@ -14,19 +15,17 @@ namespace Logic
         public static double FindNthRoot(double number, int pow, double accuracy)
         {
             if(pow <= 0)
-                throw new ArgumentException();
+                throw new ArgumentException("Power is less than 1.");
 
-            if (number == 1)
-                return 1;
+            var x0 = number / pow;
+            var x1 = (1 / (double)pow) * ((pow - 1) * x0 + number / System.Math.Pow(x0, pow - 1));
 
-            double t;
-            double root = number / pow;
-            do
+            while (System.Math.Abs(x1 - x0) > accuracy || System.Math.Abs(x1 - x0) != 0)
             {
-                t = root;
-                root = (t + (number / t)) / pow;
-            } while (System.Math.Abs(t - root) > accuracy || t - root != 0);
-            return root;
+                x0 = x1;
+                x1 = (1 / (double)pow) * ((pow - 1) * x0 + number / System.Math.Pow(x0, pow - 1));
+            }
+            return System.Math.Round(x1, accuracy.ToString().Length - 2);
         }
     }
 }
