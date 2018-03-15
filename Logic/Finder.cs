@@ -4,8 +4,6 @@ namespace Logic
 {
     public class Finder
     {
-        #region FindNextBiggerNumber
-
         /// <summary>
         /// Returns next bigger number consisting of digits from input number.
         /// </summary>
@@ -28,7 +26,7 @@ namespace Logic
                 {
                     int firstLower = arrOfDigits[i + 1];
                     int minInd = 0;
-                    int maxInInterval = arrOfDigits[i];
+                    int maxInInterval = Int32.MaxValue;
                     for (int j = 0; j <= i; j++)
                     {
                         if (arrOfDigits[j] > firstLower && maxInInterval > arrOfDigits[j])
@@ -64,12 +62,13 @@ namespace Logic
         {
             int[] arr = new int[num.ToString().Length];
             int index = 0;
-            while (num % 10 != 0)
+            while (num / 10 != 0)
             {
                 arr[index] = num % 10;
                 num /= 10;
                 index++;
             }
+            arr[index] = num;
             return arr;
         }
 
@@ -100,13 +99,5 @@ namespace Logic
             a = b;
             b = buff;
         }
-
-        #endregion
-
-        #region FindDigit
-
-        
-
-        #endregion
     }
 }

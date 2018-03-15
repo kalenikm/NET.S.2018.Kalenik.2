@@ -48,5 +48,18 @@ namespace Logic.Tests
         {
             return Inserter.InsertNumber(a, b, i, j);
         }
+
+        [TestCase]
+        public void InsertNumber_ThrowArgumentException()
+        {
+            NUnit.Framework.Assert.Throws<ArgumentException>(() => Inserter.InsertNumber(8, 12, 4, 2));
+        }
+
+        [TestCase]
+        public void InsertNumber_ThrowArgumentOutOfRangeException()
+        {
+            NUnit.Framework.Assert.Throws<ArgumentOutOfRangeException>(() => Inserter.InsertNumber(8, 12, -4, 2));
+            NUnit.Framework.Assert.Throws<ArgumentOutOfRangeException>(() => Inserter.InsertNumber(8, 12, -4, -2));
+        }
     }
 }

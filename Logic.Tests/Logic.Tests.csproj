@@ -57,7 +57,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FilterTests.cs" />
+    <Compile Include="FinderTests.cs" />
     <Compile Include="InserterTests.cs" />
+    <Compile Include="MathTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

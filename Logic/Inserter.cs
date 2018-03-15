@@ -16,6 +16,9 @@ namespace Logic
             if (i > j)
                 throw new ArgumentException("Wrong interval.");
 
+            if (i < 0 || j < 0)
+                throw new ArgumentOutOfRangeException();
+
             int mask = (1 << (j - i + 1)) - 1;
             int interval = b & mask;
             interval = interval << i;
