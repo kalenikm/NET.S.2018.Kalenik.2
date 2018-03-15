@@ -19,8 +19,15 @@ namespace Logic.Tests
         [TestCase(20, ExpectedResult = -1)]
         public int FindNextBiggerNumber(int num)
         {
-            var time = new TimeSpan();
+            TimeSpan time;
             return Finder.FindNextBiggerNumber(num, out time);
+        }
+
+        [TestCase]
+        public void FindNextBiggerNumber_ThrowArgumentException()
+        {
+            TimeSpan time;
+            var result = Finder.FindNextBiggerNumber(1, out time);
         }
     }
 }
